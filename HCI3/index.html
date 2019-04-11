@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello, WebVR! - A-Frame</title>
+    <meta name="description" content="Hello, WebVR! - A-Frame">
+    <script src="libs/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v1.14.0/dist/aframe-extras.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <!--Text Indicators for interactions-->
+      <a-text value="Click the rocket for a poem" position="1.4 1.9 2.2"></a-text> 
+      <a-text rotation="0 90 0" value="Click the Gramophone for Music" position="-8.1 2.5 4.3"></a-text>    
+      <a-text rotation="0 55 0" value="Click the Piano keys for Music" position="-5.9 1.6 -10.5"></a-text>
+      <a-text rotation="0 270 0" value="Click the button for a Tavern" position="11 3 -4.5"></a-text>    
+      <!-- Boxes With Audio -->
+      <a-box material="color:blue;transparent:true;opacity:0" depth="1" height="1" width="1" sound="src: url(https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FBlue%20Moon%20(Frank%20Sinatra%20-%20with%20Lyrics).mp3?1518598424073); on: click" class="intersectable" position="-8.1 1.75 5.3"></a-box>
+      <a-box material="color:blue;transparent:true;opacity:0" depth=".5" height="1" width=".5" sound="src: url(https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FInterstellar%20-%20Do%20not%20go%20gentle%20into%20that%20good%20night.mp3?1518663362565); on: click" class="intersectable" position="1.4 1.1 2.2"></a-box>
+      <a-box material="color:blue;transparent:true;opacity:0" depth="3" height=".1" width=".5" sound="src: url(https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FBob%20Acri%20-%20Sleep%20Away.mp3?1518852480744); on: click" class="intersectable" position="-5.2 1.6 -12" rotation="0 -35 0"></a-box>
+      
+      <!-- The Sky/stars and lights -->
+       <a-entity light="type: ambient; color: #BBB"></a-entity>
+       <a-entity light="type: directional; color: #FFF; intensity: 0.6" position="-0.5 1 1"></a-entity>
+      
+       <a-light type="point" color="white" position="12 2.8 -11.2" scale=".1 .1 .1" class="intersectable" intensity="0">
+       <a-animation  attribute="intensity" from="0" to=".3" dur="10000" direction="alternate"  repeat></a-animation>
+       </a-light>
+      
+
+       <!-- <a-light type="point" color="blue" position="-8.1 1.75 5.3" scale=".1 .1 .1" class="intersectable" decay=".1" intensity="0">
+        <a-animation  attribute="intensity" from="0" to=".2" dur="10000" direction="alternate"  repeat></a-animation>
+        </a-light> 
+        <a-light type="point" color="blue" position="-5.2 1.6 -12" scale=".1 .1 .1" class="intersectable" decay=".1" intensity="0">
+        <a-animation  attribute="intensity" from="0" to=".2" dur="10000" direction="alternate"  repeat></a-animation>
+        </a-light>
+        <a-light type="point" color="blue" position="1.4 1.1 2.2" scale=".1 .1 .1" class="intersectable" decay=".1" intensity="0">
+        <a-animation  attribute="intensity" from="0" to=".2" dur="10000" direction="alternate"  repeat></a-animation>
+        </a-light>-->
+      
+      <a-sky color="#ECECEC"></a-sky>
+      <a-box position="12.4 2.8 -11.2" scale=".1 2 2" rotation="0 0 0" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FStar.jpg?1518749640222"></a-box>
+      <!-- All assets for this Project -->
+      <a-assets>
+                <a-asset-item id="object" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2Fmodel.obj?1518580812981"></a-asset-item>
+                <a-asset-item id="material" src="https://cdn.glitch.com/01ed6aa3-bbbd-4bb8-b730-fc07f6bf22c0%2Fmaterials.mtl?1518503544756"></a-asset-item>
+                <a-asset-item id="PoolTableO" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FPoolTable.obj?1518580861389"></a-asset-item>
+                <a-asset-item id="PoolTableM" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FPoolTable.mtl?1518580860919"></a-asset-item>
+                <a-asset-item id="TableO" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FTable.obj?1518504442438"></a-asset-item>
+                <a-asset-item id="TableM" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FTable.mtl?1518504443405"></a-asset-item>
+                <a-asset-item id="CouchO" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FCouch.obj?1518542398927"></a-asset-item>
+                <a-asset-item id="CouchM" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FCouch.mtl?1518542396866"></a-asset-item>
+                <a-asset-item id="LampO" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FLamp.obj?1518543026698"></a-asset-item>
+                <a-asset-item id="LampM" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FLamp.mtl?1518543023146"></a-asset-item>
+                <a-asset-item id="RemoteCO" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FRemote%20control.obj?1518543639292"></a-asset-item>
+                <a-asset-item id="RemoteCM" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FRemote%20control.mtl?1518543639021"></a-asset-item>
+                <a-asset-item id="CoffeeTO" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FCoffeeT.obj?1518545293450"></a-asset-item>
+                <a-asset-item id="CoffeeTM" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FCoffeeT.mtl?1518545293330"></a-asset-item>
+                <a-asset-item id="TableLO" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FTableLamp.obj?1518580182081"></a-asset-item>
+                <a-asset-item id="TableLM" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FTableLamp.mtl?1518580181821"></a-asset-item>
+                <a-asset-item id="LaptopO" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FLaptop.obj?1518740374700"></a-asset-item>
+                <a-asset-item id="LaptopM" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FLaptop.mtl?1518740374331"></a-asset-item>
+                <a-asset-item id="TabletO" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FTablet_1350.obj?1518580418632"></a-asset-item>
+                <a-asset-item id="TabletM" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FTablet_1350.mtl?1518580418703"></a-asset-item>
+                <a-asset-item id="ComputerTableO" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FComputer%20Table.obj?1518580475678"></a-asset-item>
+                <a-asset-item id="ComputerTableM" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FComputer%20Table.mtl?1518580475701"></a-asset-item>
+                <a-asset-item id="NiceTableO" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FNiceTable.obj?1518583563512"></a-asset-item>
+                <a-asset-item id="NiceTableM" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FNiceTable.mtl?1518583563601"></a-asset-item>
+                <a-asset-item id="GramophoneO" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FGrammaphone.obj?1518580531966"></a-asset-item>
+                <a-asset-item id="GramophoneM" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FGrammaphone.mtl?1518580531894"></a-asset-item>
+                <a-asset-item id="TotoroO" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FTotoro.obj?1518580584862"></a-asset-item>
+                <a-asset-item id="TotoroM" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FTotoro.mtl?1518580584857"></a-asset-item>
+                <a-asset-item id="TreasureO" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FTreasure.obj?1518580651066"></a-asset-item>
+                <a-asset-item id="TreasureM" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FTreasure.mtl?1518580650150"></a-asset-item>
+                <a-asset-item id="CatO" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FCat.obj?1518585493316"></a-asset-item>
+                <a-asset-item id="CatM" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FCat.mtl?1518585493439"></a-asset-item> 
+                <a-asset-item id="ServerRackO" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FServerRack.obj?1518586528694"></a-asset-item>
+                <a-asset-item id="ServerRackM" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FServerRack.mtl?1518586528171"></a-asset-item>
+                <a-asset-item id="BookShelfO" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FBookShelf.obj?1518586869489"></a-asset-item>
+                <a-asset-item id="BookShelfM" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FBookShelf.mtl?1518586869359"></a-asset-item>
+                <a-asset-item id="RocketO" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FRocket.obj?1518663389294"></a-asset-item>
+                <a-asset-item id="RocketM" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FRocket.mtl?1518663389212"></a-asset-item> 
+                <a-asset-item id="TavernO" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FTavern.obj?1518674667847"></a-asset-item>
+                <a-asset-item id="TavernM" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FTavern.mtl?1518674667501"></a-asset-item>
+                <a-asset-item id="ButtonO" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FButton.obj?1518677401169"></a-asset-item>
+                <a-asset-item id="ButtonM" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FButton.mtl?1518677401090"></a-asset-item> 
+                <a-asset-item id="TankO" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FTank.obj?1518740947129"></a-asset-item>
+                <a-asset-item id="TankM" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FTank.mtl?1518740947045"></a-asset-item>
+                <a-asset-item id="ChairO" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FChair.obj?1518741481768"></a-asset-item>
+                <a-asset-item id="ChairM" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FChair.mtl?1518741481627"></a-asset-item> 
+                <a-asset-item id="PrinterO" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FPrinter.obj?1518744123862"></a-asset-item>
+                <a-asset-item id="PrinterM" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FPrinter.mtl?1518744123525"></a-asset-item> 
+                <a-asset-item id="TelescopeO" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FTeleScope.obj?1518747820155"></a-asset-item>
+                <a-asset-item id="TelescopeM" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FTeleScope.mtl?1518747820031"></a-asset-item> 
+                <a-asset-item id="WindowO" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FWindow.obj?1518748186465"></a-asset-item>
+                <a-asset-item id="WindowM" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FWindow.mtl?1518748186596"></a-asset-item>
+                <a-asset-item id="TableSetO" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FTableSet.obj?1518750810397"></a-asset-item>
+                <a-asset-item id="TableSetM" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FTableSet.mtl?1518750810261"></a-asset-item> 
+                <a-asset-item id="KitchenO" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FKitchen.obj?1518751654068"></a-asset-item>
+                <a-asset-item id="KitchenM" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FKitchen.mtl?1518751653191"></a-asset-item> 
+                <a-asset-item id="ToasterO" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FToaster.obj?1518753617173"></a-asset-item>
+                <a-asset-item id="ToasterM" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FToaster.mtl?1518753617625"></a-asset-item> 
+                <a-asset-item id="MicrowaveO" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FMicrowave_1340.obj?1518754004561"></a-asset-item>
+                <a-asset-item id="MicrowaveM" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FMicrowave_1340.mtl?1518754004453"></a-asset-item> 
+                <a-asset-item id="OrchidO" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FOrchid_422.obj?1518754471505"></a-asset-item>
+                <a-asset-item id="OrchidM" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FOrchid_422.mtl?1518754471413"></a-asset-item> 
+                <a-asset-item id="StoveO" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FStove.obj?1518755246866"></a-asset-item>
+                <a-asset-item id="StoveM" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FStove.mtl?1518755246764"></a-asset-item> 
+                <a-asset-item id="PianoO" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FPiano.obj?1518755791961"></a-asset-item>
+                <a-asset-item id="PianoM" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FPiano.mtl?1518755791989"></a-asset-item> 
+                <a-asset-item id="ShelfO" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FShelf.obj?1518757081794"></a-asset-item>
+                <a-asset-item id="ShelfM" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FShelf.mtl?1518757081870"></a-asset-item> 
+                <a-asset-item id="StereoO" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FHi-fi%20stereo.obj?1518757536563"></a-asset-item>
+                <a-asset-item id="StereoM" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FHi-fi%20stereo.mtl?1518757536340"></a-asset-item> 
+                <a-asset-item id="TVO" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FTV.obj?1518759431453"></a-asset-item>
+                <a-asset-item id="TVM" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FTV_01.mtl?1518759431470"></a-asset-item> 
+                <a-asset-item id="CribO" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FSM_Fort.obj?1518761541881"></a-asset-item>
+                <a-asset-item id="CribM" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FSM_Fort.mtl?1518761541213"></a-asset-item> 
+                <a-asset-item id="PillowO" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2Fpillow.obj?1518761787621"></a-asset-item>
+                <a-asset-item id="PillowM" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2Fpillow.mtl?1518761787732"></a-asset-item> 
+                <a-asset-item id="CampingO" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FCamping.obj?1518830609447"></a-asset-item>
+                <a-asset-item id="CampingM" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FCamping.mtl?1518830609285"></a-asset-item> 
+                <a-asset-item id="CeilingfanO" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FCeiling.obj?1519085080744"></a-asset-item>
+                <a-asset-item id="CeilingfanM" src="https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FCeiling.mtl?1519085080736"></a-asset-item>         
+         </a-assets>
+      
+        <!-- What the item is and where it goes -->
+            <a-obj-model rotation="0 90 0" position="-6 1 -1" scale="2 2 2" src="#PoolTableO" mtl="#PoolTableM"></a-obj-model>
+            <a-obj-model position="4.0 1 5.2" scale="4 4 4" src="#TableO" mtl="#TableM"></a-obj-model>
+            <a-obj-model position="-4.0 1 5.2" scale="4 4 4" src="#TableO" mtl="#TableM"></a-obj-model>
+            <a-obj-model position="4.0 1.3 5.2" scale=".01 .01 .01" src="#LampO" mtl="#LampM"></a-obj-model>
+            <a-obj-model position="-4.0 1.3 5.2" scale=".01 .01 .01" src="#LampO" mtl="#LampM"></a-obj-model>
+            <a-obj-model rotation="0 90 0" position="-4.2 1.3 4.5" scale=".0002 .0002 .0002" src="#RemoteCO" mtl="#RemoteCM"></a-obj-model>
+            <a-obj-model position="0 .7 5" scale="3.5 3.5 3.5" src="#CouchO" mtl="#CouchM"></a-obj-model>
+            <a-obj-model position="0 .3 2" scale="2.8 2 2.8" src="#CoffeeTO" mtl="#CoffeeTM"></a-obj-model>
+            <a-obj-model rotation="0 270 0"  position="11.8 2.6 5" scale="1.5 1.5 1.5" src="#TableLO" mtl="#TableLM"></a-obj-model>
+            <a-obj-model rotation="-90 0 90" position="7.5 1.7 4.5" scale=".01 .01 .01"  src="#LaptopO" mtl="#LaptopM"></a-obj-model>
+            <a-obj-model position="-1 .8 2.7" scale=".007 .007 .007" src="#TabletO" mtl="#TabletM"></a-obj-model>
+            <a-obj-model rotation="0 270 0" position="10 .8 3.3" scale="3 1.7 3" src="#ComputerTableO" mtl="#ComputerTableM"></a-obj-model>
+            <a-obj-model rotation="0 0 0" position="-8 1.3 5" scale=".7 .7 .7" src="#NiceTableO" mtl="#NiceTableM"></a-obj-model>
+            <a-obj-model rotation="0 270 0" position="-8.1 1.75 5.3" scale="1.5 1.5 1.5" src="#GramophoneO" mtl="#GramophoneM"></a-obj-model>
+            <a-obj-model rotation="0 -20 0" position="10.2 2.5 5.75" scale="1 1 1" src="#TotoroO" mtl="#TotoroM"></a-obj-model>
+            <a-obj-model rotation="0 50 0" position="9.5 1.87 5.75" scale="1 1 1" src="#TreasureO" mtl="#TreasureM"></a-obj-model>
+            <a-obj-model rotation="0 -30 0" position="1.4 1.15 4.5" scale="2 2 2" src="#CatO" mtl="#CatM"><a-animation begin="click" attribute="position" from="0 0 6" to= "5 0 -10" dur="3000" direction="alternate" easing="ease-in-out"></a-animation></a-obj-model>
+            <a-obj-model rotation="0 0 0" position="11.4 1.6 2.35" scale=".008 .008 .008" src="#CoffeeMakerO" mtl="#CoffeeMakerM" ></a-obj-model>
+            <a-obj-model rotation="0 180 0" position="11 2.8 0.35" scale="2 2 2" src="#ServerRackO" mtl="#ServerRackM"></a-obj-model>
+            <a-obj-model rotation="0 90 0" position="11 1.5 -2" scale="3 3 3" src="#BookShelfO" mtl="#BookShelfM"></a-obj-model>
+            <a-obj-model rotation="0 90 0" position="1.4 1.1 2.2" scale=".2 .2 .2" src="#RocketO" mtl="#RocketM"></a-obj-model>
+            <a-obj-model rotation="0 90 0" position="12.5 2 -4" scale="1 1 1" src="#ButtonO" mtl="#ButtonM"></a-obj-model>
+            <a-obj-model rotation="0 90 0" position="6.1 1.9 5.6" scale="1.2 1.2 1.2" src="#TankO" mtl="#TankM"></a-obj-model>
+            <a-obj-model rotation="0 180 0" position="7.5 .85 2.6" scale="1.7 2 1.7" src="#ChairO" mtl="#ChairM"></a-obj-model>
+            <a-obj-model rotation="0 90 0" position="10.7 1.7 -4.65" scale=".00003 .00003 .00003 " src="#PrinterO" mtl="#PrinterM"></a-obj-model>
+            <a-obj-model rotation="0 180 0" position="10.7 1.1 -12.65" scale="1.5 1.5 1.5" src="#TelescopeO" mtl="#TelescopeM"></a-obj-model>
+            <a-obj-model rotation="0 180 0" position="12.4 2.8 -11.2" scale="4 4 4" src="#WindowO" mtl="#WindowM"></a-obj-model>
+            <a-obj-model rotation="0 180 0" position="0 0 -12" scale=".05 .05 .05" src="#TableSetO" mtl="#TableSetM"></a-obj-model>
+            <a-obj-model rotation="0 30 0" position="25.5 0 -11.7" scale=".0002 .000265 .0002" src="#KitchenO" mtl="#KitchenM"></a-obj-model>
+            <a-obj-model rotation="0 20 0" position="0 2 -6.7" scale="1 1 1" src="#ToasterO" mtl="#ToasterM"></a-obj-model>
+            <a-obj-model rotation="0 180 0" position="1.4 1.8 -6.3" scale=".03 .03 .03" src="#MicrowaveO" mtl="#MicrowaveM"></a-obj-model>
+            <a-obj-model rotation="0 60 0" position=".25 1.5 -11.5" scale=".01 .01 .01" src="#OrchidO" mtl="#OrchidM"></a-obj-model>
+            <a-obj-model rotation="0 -210 0" position="6 .92 -13.9" scale="6.5 6.5 6.5" src="#StoveO" mtl="#StoveM"></a-obj-model>
+            <a-obj-model rotation="0 -35 0" position="-5.9 1.6 -12.5" scale="1.2 1.2 1.2" src="#PianoO" mtl="#PianoM"></a-obj-model>
+            <a-obj-model rotation="0 -90" position="-5 0 -4.2" scale=".00008 .00008 .00008" src="#StereoO" mtl="#StereoM"></a-obj-model>
+            <a-obj-model rotation="-90 180 0" position="0 2 -5.4" scale=".009 .009 .009" src="#TVO" mtl="#TVM"></a-obj-model>
+            <a-obj-model rotation="0 90 0" position="-7.5 -.08 -8 " scale=".05 .05 .05" src="#CribO" mtl="#CribM"></a-obj-model>
+            <a-obj-model rotation="0 0 0" position="-7.3 .3 -7.85 " scale=".4 .4 .4" src="#PillowO" mtl="#PillowM"></a-obj-model>
+            <a-obj-model rotation="0 90 0" position="9 .90 -14.2" scale="2 2 2" src="#CampingO" mtl="#CampingM"></a-obj-model>
+             <a-box position="0 2 -5.5" scale="4 .1 1" rotation="0 0 0" color="white"></a-box>
+        <!-- Moving animation-->
+            <a-entity geometry="primitive: box" color="blue" rotation="0 90 0" position="15 1.8 -4" scale="1.3 1.3 1.3" obj-model="position:15 1.8 -6.6;obj:#TavernO; mtl:#TavernM"  class="intersectable" >
+            <a-animation begin="click" attribute="position" from="15 2 -7" to= "10 2 -7" dur="3000" direction="alternate" easing="ease-in-out"></a-animation> </a-entity>
+         
+            <a-entity rotation="0 0 0" position="0 4.3 -1.5" scale=".007 .003 .007" obj-model="position:0 4.3 -1.5;obj:#CeilingfanO; mtl:#CeilinganM"  class="intersectable" >
+            <a-animation attribute="rotation"
+               dur="3000"
+               from="0 0 0"
+               to="0 360 0"
+               easing="linear"
+               repeat></a-animation></a-entity>
+     
+      
+            
+            
+      <!-- Dimensions of the Room -->
+        
+      <!-- Floor And Ceiling -->
+            <a-entity id="Floor" position="1.5 0 -4.5" rotation="-90 0 0" geometry="primitive: plane; width: 22; height:23"
+            material="src:https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2Fwood.jpg?1518668274091; repeat: 12 6"></a-entity> 
+            <a-entity id="Ceiling" position="1.5 5 -4.5" rotation="-270 0 0" geometry="primitive: plane; width: 22; height:23"
+            material="src:https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2FTest2.jpg?1518738393867; repeat: 12 12"></a-entity>
+      <!-- Walls around the Room-->        
+            <a-entity id="Wall1F" position="1.5 2 -15" rotation="0 0 0" geometry="primitive: plane; width: 22; height:6"
+            material="src:https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2Ftest3.jpg?1518738587897; repeat: 6 2"></a-entity>    
+            <a-entity id="Wall2B" position="1.5 2 7" rotation="180 0 0" geometry="primitive: plane; width: 22; height:6"
+            material="src:https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2Ftest3.jpg?1518738587897; repeat: 6 2"></a-entity>          
+            <a-entity id="Wall3L" position="-9.4 2 -4" rotation="0 90 0" geometry="primitive: plane; width:22; height:6"
+            material="src:https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2Ftest3.jpg?1518738587897; repeat: 6 2"></a-entity>
+            <a-entity id="Wall4R" position="12.4 2 -4" rotation="0 -90 0" geometry="primitive: plane; width: 22; height:6"
+            material="src:https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2Ftest3.jpg?1518738587897; repeat: 6 2"></a-entity>
+          
+            <a-entity id="CenterWall" position="0 2 -6" rotation="-90 0 0" geometry="primitive: box; width: 7; height:.1;depth:7"
+            material="src:https://cdn.glitch.com/7ab7d3b7-ddd5-4be2-aca9-8c93ca6ac0c6%2Ftest3.jpg?1518738587897; repeat: 2 2"></a-entity>
+               
+             
+        <!-- Camera/person moving around -->    
+            <a-entity position="0 1 3">
+                    <a-camera universal-controls="acceleration: 10">
+            <a-entity raycaster="far: 150; objects: .intersectable" cursor geometry="primitive: ring; radiusOuter: 0.015;
+                              radiusInner: 0.01; segmentsTheta: 32" material="color: #283644; shader: flat" position="0 0 -0.75"></a-entity>
+            </a-camera>
+            </a-entity>
+     
+    </a-scene>
+  </body>
+</html>
